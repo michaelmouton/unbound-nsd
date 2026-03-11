@@ -10,8 +10,6 @@ RUN rm -rf /etc/nsd/*
 RUN install -o unbound -g unbound -m 0755 -d /var/unbound
 RUN install -o nsd -g nsd -m 0755 -d /var/nsd
 
-RUN chown nsd:nsd /var/db/nsd
-
 RUN touch /var/unbound/root.key
 RUN /usr/sbin/unbound-anchor -v -a /var/unbound/root.key || true
 RUN chown unbound:unbound /var/unbound/root.key
