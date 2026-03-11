@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+
+name="dnsman"
+description="DNS management servive for Unbound and NSD bootstrap script"
+command="/usr/local/bin/dns-bootstrap.sh"
+command_background=true
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+   need net
+   after firewall
+}
