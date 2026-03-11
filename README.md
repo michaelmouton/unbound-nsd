@@ -54,3 +54,16 @@ Export the image.
 ```
 sudo docker save unbound > unbound.tar
 ```
+
+## Configuring for a Proxmox VE-based LXE container
+
+On Proxmox select a datastore that is capable of storing LXC templates.  Click on the "Templates" button, then search for ```alpine-3.23``` and download the latest build.
+
+Using the Alpine template, create an LXC container on your Proxmox host, and make sure to assign a static IP address.  If you have DHCP on this network also make sure the DNS IP is not in the DHCP IP pool, and condigure the DHCP server to serve the DNS IP.
+
+Start your LXC container, login as ```root```.  Then run the following command...
+```
+wget -qO- https://raw.githubusercontent.com/michaelmouton/unbound-nsd/refs/heads/main/lxc-builder.sh | sh
+```
+
+The ```lxc-builder.sh``` script fully configures your Alpine container with the full DNS stack.  It also creates an OpenRC service which automatically starts once the script finised executing.
