@@ -67,3 +67,5 @@ wget -qO- https://raw.githubusercontent.com/michaelmouton/unbound-nsd/refs/heads
 ```
 
 The ```lxc-builder.sh``` script fully configures your Alpine container with the full DNS stack.  It also creates an OpenRC service which automatically starts once the script finised executing.
+
+Also remember, Alpine Linux is extremely portable, so the boot disk only has to be 256MB (0.25GB) in size.
