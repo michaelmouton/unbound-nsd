@@ -61,11 +61,13 @@ On Proxmox select a datastore that is capable of storing LXC templates.  Click o
 
 Using the Alpine template, create an LXC container on your Proxmox host, and make sure to assign a static IP address.  If you have DHCP on this network also make sure the DNS IP is not in the DHCP IP pool, and condigure the DHCP server to serve the DNS IP.
 
+When initially setting up the LXC container you will have to use a public DNS resolver (such as Cloudflare, Google, or Quad9) to resolve the domain names in the installer script.  After that you can power off the container and change it to ```127.0.0.1```.
+
 Start your LXC container, login as ```root```.  Then run the following command...
 ```
 wget -qO- https://raw.githubusercontent.com/michaelmouton/unbound-nsd/refs/heads/main/lxc-builder.sh | sh
 ```
 
-The ```lxc-builder.sh``` script configures your Alpine container with the full DNS stack.  It also creates an OpenRC service which automatically starts once the script finised executing.
+The installer script configures your Alpine container with the full DNS stack.  It also creates an OpenRC service which automatically starts once the script finised executing.
 
 Also remember, Alpine Linux is extremely portable, so the boot disk only has to be 256MB (0.25GB) in size.
