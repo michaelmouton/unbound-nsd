@@ -1,11 +1,11 @@
 #!/bin/sh
 
-/usr/sbin/nsd &
+/usr/sbin/nsd -d &
 NSD_PID=$!
 
 sleep 3
 
-/usr/sbin/unbound &
+/usr/sbin/unbound -d &
 UNBOUND_PID=$!
 
 term_handler() {
