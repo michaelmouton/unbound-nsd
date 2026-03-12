@@ -6,7 +6,7 @@ rm -rf /etc/unbound/*
 rm -rf /etc/nsd/*
 
 install -o unbound -g unbound -m 0755 -d /var/unbound
-install -o nsd -g nsd -m 0755 -d /var/nsd
+install -o nsd -g nsd -m 0755 -d /var/nsd/db
 
 touch /var/unbound/root.key
 /usr/sbin/unbound-anchor -v -a /var/unbound/root.key || true
